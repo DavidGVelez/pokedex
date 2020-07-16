@@ -12,13 +12,14 @@ const useStyles = makeStyles({
         fontSize: '.8rem',
         padding: '.5rem',
         textTransform:'uppercase',
-        margin: 'auto'
+        margin: 'auto',
+        color: '#ffffff'
     },
     bug:{
         backgroundColor: '#919F24'
     },
     dark:{
-        backgroundColor: '#3D2F26'
+        backgroundColor: '#372720'
     },
     dragon:{
         backgroundColor: '#B4A8EB',

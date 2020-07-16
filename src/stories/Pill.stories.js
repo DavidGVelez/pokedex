@@ -1,17 +1,11 @@
 import React from 'react';
 import Pill from '../components/atoms/Pill'
-
-const props = {
-    type: 'bug'
-}
+import {storiesOf} from '@storybook/react'
 
 
-export const pill = () => 
-<Pill {...props}/>;
-
-
-
-export default{
-    component: pill,
-    title: 'Pill'
-}
+storiesOf('Types', module)
+  .add('fire', () => <Pill type={'fire'}/>)
+  .add('ice', () => <Pill type={'ice'}/>)
+  .add('dark', () => <Pill type={'dark'}/>)
+  .add('water', () => <Pill type={'water'}/>)
+;

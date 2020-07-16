@@ -4,5 +4,6 @@
 
 ## Commands
 
-    run build - npm start
-    run storybook - npm run storybook
+    run all - npm start
+    run react - npm react
+    run storybook - npm storybook

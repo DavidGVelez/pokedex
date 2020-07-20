@@ -2,6 +2,7 @@ import React from 'react';
 import Entry from '../components/organisms/Entry'
 import Pill from '../components/atoms/Pill'
 import pikachu from '../pikachu.json'
+
 const props = {
     id: pikachu.id,
     name: pikachu.name,

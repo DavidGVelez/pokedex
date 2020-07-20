@@ -1,4 +1,5 @@
 import React from 'react'
+import Pill from '../atoms/Pill'
 import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles({
@@ -8,15 +9,13 @@ const useStyles = makeStyles({
 })
 
 
-export default function Types(props){
-    // console.log('props',props)
-    // console.log(props.data)
-    console.log(props)
+export default function Types({
+    types
+}){
     const classes = useStyles();
-    
     return(
         <div className={classes.container}>
-        {props.types.map(type => type)}
+        {types.map(type => <Pill type={type}/>)}
         
         </div>
     )

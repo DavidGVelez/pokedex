@@ -73,44 +73,43 @@ const useStyles = makeStyles({
 )
 
 
-export default function Entry(props){
+export default function Entry({types,
+    name, 
+    weight,
+    height,
+    id,
+    url,
+    alt,
+    description
+        }){
     const classes = useStyles();
-    console.log(props.types)
     return(
-        // <div className={classes.card}>
-        //         <div className={classes.image}>
-        //             <img className={classes.portrait} src={`${props.url}`} alt={props.alt}/>
-        //         </div>
-        //         <div className={classes.info}>  
-        //             <span className={classes.text}>#1 PIKACHU</span>
-        //         </div>
-        // </div>
         <div className={classes.card}>
             <div className={classes.topWrapper}>
                 <div className={classes.portrait}>
-                    <img className={classes.sprite} src={`${props.url}`} alt={props.alt}/>
+                    <img className={classes.sprite} src={`${url}`} alt={alt}/>
                 </div>
                 <div className={classes.infoWrapper}>
                     <div className={classes.topInfo}>
                         <div className={classes.name}>
-                            <span className={classes.text}>{`${props.id} - ${props.name}`}</span>
+                            <span className={classes.text}>{`${id} - ${name}`}</span>
                         </div>
                     </div>
                     <div className={classes.types}>
-                        {<Types types={props.types}/>}
+                        {<Types types={types}/>}
                     </div>
                     <div className={classes.bottomInfo}>
                         <div className={classes.text}>
-                                {`Weight ${props.weight/10} kg`}
+                                {`Weight ${weight/10} kg`}
                         </div>
                         <div className={classes.text}>
-                        {`Height ${props.height/10} cm`}
+                        {`Height ${height/10} cm`}
                         </div>
                     </div>
                 </div>
             </div>
             <div className={classes.description}>
-                <p className={classes.text}>{props.description}</p>
+                <p className={classes.text}>{description}</p>
             </div>
         </div>
     )

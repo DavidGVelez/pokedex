@@ -11,13 +11,13 @@ const useStyles = makeStyles({
     },
 })
 
-export default function Pokemon(props){
+export default function Pokemon({name, url}){
 
 const classes = useStyles()
 
 return (
     <div className={classes.row}>
-        <img src={props.url} alt={props.name}/>   
+        <img src={url} alt={name}/>   
     </div>
 )
 } 

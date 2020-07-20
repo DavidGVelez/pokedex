@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 export default function PokemonGrid(props){
 
     const classes = useStyles()
-    console.log('data', props.data)
 
     return(
         <div className={classes.grid}>

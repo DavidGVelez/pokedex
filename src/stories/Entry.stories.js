@@ -3,6 +3,8 @@ import Entry from '../components/organisms/Entry'
 import Pill from '../components/atoms/Pill'
 import pikachu from '../pikachu.json'
 
+const TYPES = []
+pikachu.types.map( type => TYPES.push(type.type.name))
 const props = {
     id: pikachu.id,
     name: pikachu.name,
@@ -10,7 +12,7 @@ const props = {
     height: pikachu.height,
     weight: pikachu.weight,
     url: pikachu.sprites.front_default,
-    types: [<Pill type={'electric'}/>, <Pill type={'dark'}/>]
+    types: TYPES
 }
 
 export const entry = () => 

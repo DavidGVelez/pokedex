@@ -4,10 +4,13 @@ import Pill from '../components/atoms/Pill'
 import pikachu from '../pikachu.json';
 import {storiesOf} from '@storybook/react'
 
-
+const TYPES = []
+pikachu.types.map( type => TYPES.push(type.type.name))
  
-// const data = pikachu.types.map( type => type.type.name)
-const pills = [<Pill type={'water'}/>, <Pill type={'fire'}/>]
+
+const props ={
+    types: TYPES
+}
 
 storiesOf('Molecules|Types', module)
-.add('sample', () =><Types types={pills}/>)
+.add('sample', () =><Types {...props}/>)

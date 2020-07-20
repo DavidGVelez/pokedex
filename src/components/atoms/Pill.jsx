@@ -73,11 +73,13 @@ const useStyles = makeStyles({
 
 
 
-export default function Pill(props){
+export default function Pill({
+    type,
+}){
     const classes = useStyles();
     return(
-        <div className={`${classes.pill} ${classes[props.type]}`}>
-            <span className={classes.text}>{props.type}</span>
+        <div className={`${classes.pill} ${classes[type]}`}>
+            <span className={classes.text}>{type}</span>
         </div>
     )
 }

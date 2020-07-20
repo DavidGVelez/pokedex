@@ -1,9 +1,15 @@
 import React from 'react';
-import Entry from '../components/Entry'
+import Entry from '../components/organisms/Entry'
+import Pill from '../components/atoms/Pill'
+import pikachu from '../pikachu.json'
 const props = {
-    url: "https://picsum.photos/200/300",
-    alt: 'yoda',
-    data: 'Yoda'
+    id: pikachu.id,
+    name: pikachu.name,
+    description: 'lorem ipsum',
+    height: pikachu.height,
+    weight: pikachu.weight,
+    url: pikachu.sprites.front_default,
+    types: [<Pill type={'electric'}/>, <Pill type={'dark'}/>]
 }
 
 export const entry = () => 
@@ -14,5 +20,5 @@ export const entry = () =>
 
 export default{
     component: entry,
-    title: 'Entry'
+    title: 'Organism|Entry'
 }

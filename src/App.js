@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import Entry from './components/Entry'
+import Entry from './components/organisms/Entry'
 import './App.css';
 
 function App() {

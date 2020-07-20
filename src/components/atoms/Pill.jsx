@@ -3,9 +3,9 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles({
     pill:{
-        minWidth: '4rem',
+        margin: '1rem',
+        width: '5rem',
         display: 'inline-flex',
-        borderRadius: '50px',
         border:'1px solid black',
     },
     text:{
@@ -75,7 +75,6 @@ const useStyles = makeStyles({
 
 export default function Pill(props){
     const classes = useStyles();
-    
     return(
         <div className={`${classes.pill} ${classes[props.type]}`}>
             <span className={classes.text}>{props.type}</span>

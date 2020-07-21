@@ -23,5 +23,5 @@ export const entry = () =>
 
 export default{
     component: entry,
-    title: 'Organism|Entry'
+    title: 'Organisms|Entry'
 }

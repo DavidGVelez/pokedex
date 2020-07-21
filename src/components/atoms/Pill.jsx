@@ -1,9 +1,10 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/styles'
+import {theme} from '../../theme'
 
 const useStyles = makeStyles({
     pill:{
-        margin: '1rem',
+        margin: theme.margin.medium,
         width: '5rem',
         display: 'inline-flex',
         border:'1px solid black',
@@ -16,70 +17,75 @@ const useStyles = makeStyles({
         color: '#ffffff'
     },
     bug:{
-        backgroundColor: '#919F24'
+        backgroundColor: theme.colors.bug
     },
     dark:{
-        backgroundColor: '#372720'
+        backgroundColor: theme.colors.dark
     },
     dragon:{
-        backgroundColor: '#B4A8EB',
+        backgroundColor: theme.colors.dragon
     },
     electric:{
-        backgroundColor: '#E1A426'
+        backgroundColor: theme.colors.electric
     },
     fairy:{
-        backgroundColor: '#EDA3EE'
+        backgroundColor: theme.colors.fairy
     },
     fighting:{
-        backgroundColor: '#7D311D'
+        backgroundColor: theme.colors.fighting
     },
     fire:{
-        backgroundColor: '#D63208'
+        backgroundColor: theme.colors.fire
     },
     flying:{
-        backgroundColor: '#8598EC'
+        backgroundColor: theme.colors.flying
     },
     ghost:{
-        backgroundColor: '#505198'
+        backgroundColor: theme.colors.ghost
     },
     grass:{
-        backgroundColor: '#71BB36'
+        backgroundColor: theme.colors.grass
     },
     ground:{
-        backgroundColor: '#D2B156'
+        backgroundColor: theme.colors.ground
     },
     ice:{
-        backgroundColor: '#6FD4F5'
+        backgroundColor: theme.colors.ice
     },
     normal:{
-        backgroundColor: '#C6C1BB'
+        backgroundColor: theme.colors.normal
     },
     poison:{
-        backgroundColor: '#833F84'
+        backgroundColor: theme.colors.poison
     },
     psychic:{
-        backgroundColor: '#E5497E'
+        backgroundColor: theme.colors.psychic
     },
     rock:{
-        backgroundColor: '#81723E'
+        backgroundColor: theme.colors.rocks
     },
     steel:{
-        backgroundColor: '#9394A4'
+        backgroundColor: theme.colors.steel
     },
     water:{
-        backgroundColor: '#1D72CC'
+        backgroundColor: theme.colors.water
     },
+    efectiveness:{
+        borderRadius: '20px',
+        backgroundColor: 'black'
+    }
 })
 
 
 
 export default function Pill({
     type,
+    name
 }){
     const classes = useStyles();
     return(
-        <div className={`${classes.pill} ${classes[type]}`}>
-            <span className={classes.text}>{type}</span>
+        <div className={`${classes.pill} ${classes[type] ? classes[type]: classes.black}`}>
+            <span className={classes.text}>{name}</span>
         </div>
     )
 }

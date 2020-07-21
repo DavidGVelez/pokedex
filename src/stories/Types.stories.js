@@ -5,7 +5,8 @@ import pikachu from '../pikachu.json';
 import {storiesOf} from '@storybook/react'
 
 const TYPES = []
-pikachu.types.map( type => TYPES.push(type.type.name))
+pikachu.types.map( type => TYPES.push({type: type.type.name,
+name:type.type.name }))
  
 
 const props ={

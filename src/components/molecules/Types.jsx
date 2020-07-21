@@ -10,12 +10,13 @@ const useStyles = makeStyles({
 
 
 export default function Types({
-    types
+    types,
+    name
 }){
     const classes = useStyles();
     return(
         <div className={classes.container}>
-        {types.map(type => <Pill type={type}/>)}
+        {types.map(type => <Pill type={type.type} name={type.name}/>)}
         
         </div>
     )

@@ -4,7 +4,8 @@ import Pill from '../components/atoms/Pill'
 import pikachu from '../pikachu.json'
 
 const TYPES = []
-pikachu.types.map( type => TYPES.push(type.type.name))
+pikachu.types.map( type => TYPES.push({type:type.type.name,
+name: type.type.name}))
 const props = {
     id: pikachu.id,
     name: pikachu.name,

@@ -1,4 +1,4 @@
-export default theme = {
+export const theme = {
     fontFamily: 'Roboto',
     fontSize: {
         small: '.8rem',
@@ -6,6 +6,7 @@ export default theme = {
         large: '1.2rem'
     },
     colors: {
+        background: '#aec7e6',
         black: '#292929',
         bug: '#919f24',
         dark: '#372720',
@@ -21,7 +22,7 @@ export default theme = {
         ice: '#6FD4F5',
         normal: '#C6C1BB',
         poison: '#833F84',
-        psychic: '#E5497E',
+        psychic: '#E5497E', 
         rock: '#81723E',
         steel: '#9394A4',
         water: '#1D72CC',
@@ -38,9 +39,9 @@ export default theme = {
             medium: '0 1rem',
             large: '0 2rem'
         },
-        small: '0 .5rem',
-        medium: '0 1rem',
-        large: '0 2rem'
+        small: '.5rem',
+        medium: '1rem',
+        large: '2rem'
 
     },
     margin: {
@@ -54,9 +55,9 @@ export default theme = {
             medium: '0 1rem',
             large: '0 2rem'
         },
-        small: '0 .5rem',
-        medium: '0 1rem',
-        large: '0 2rem'
+        small: '.5rem',
+        medium: '1rem',
+        large: '2rem'
 
     }
 }

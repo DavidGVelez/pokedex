@@ -1,6 +1,7 @@
 import React from 'react'
 import RegionButton from '../atoms/RegionButton'
 import {makeStyles} from '@material-ui/styles'
+import { theme } from '../../theme'
 
 const useStyles = makeStyles({
     regionList: {
@@ -8,8 +9,9 @@ const useStyles = makeStyles({
         listStyleType:'none',
         display: 'flex',
         '&> li > button':{
-           textTransform: 'capitalize',
-           fontSize: '1rem'
+            margin: theme.margin["y-axixs"].small,
+            textTransform: 'capitalize',
+            fontSize: theme.fontSize.medium,
         } 
     },
 })

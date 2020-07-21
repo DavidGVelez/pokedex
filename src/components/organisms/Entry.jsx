@@ -1,21 +1,22 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/styles'
+import {theme} from '../../theme'
 import Types from '../molecules/Types'
 const useStyles = makeStyles({
 
     card:{
-        padding: '2rem',
+        padding: theme.padding.large,
         display:'flex',
         flexDirection: 'column',
         justifyContent:'space-evenly',
         alignItems: 'center',
         width: '60rem',
         height: '30rem',
-        backgroundColor: '#f3f3f3'
+        backgroundColor: theme.colors.white
     },
     topWrapper:{
         height: '14rem',
-        padding: '2rem 0',
+        padding: theme.padding["x-axis"].large,
         width: '100%',
         margin: 'auto',
         border: '1px solid black',
@@ -52,21 +53,21 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'space-between',
         width: '40rem',
-        backgroundColor: '#ffffff'
+        backgroundColor: 'white'
     },
     
     text:{
-        padding: '1rem',
+        padding: theme.padding.medium,
         fontFamily: 'Roboto',
         color: '#292929'
     },
     description:{
         height: '10rem',
         width: '100%',
-        backgroundColor: '#ffffff'
+        backgroundColor: 'white'
     },
     name:{
-        fontSize: '1.5rem',
+        fontSize: theme.fontSize.large,
         textTransform: 'uppercase'
     }
 }

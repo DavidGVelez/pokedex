@@ -1,10 +1,11 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/styles'
+import { theme } from '../../theme'
 
 const useStyles = makeStyles({
     row:{
         justifyContent: 'center',
-        backgroundColor: '#eaeaea',
+        backgroundColor: theme.colors.white,
         margin: '.5rem',
         width: '120px',
         textAlign: 'center'

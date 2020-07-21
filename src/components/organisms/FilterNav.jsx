@@ -1,12 +1,13 @@
 import React from 'react'
 import RegionBar from '../molecules/RegionBar'
 import Search from '../atoms/Search'
+import {theme} from '../../theme'
 import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles({
     filterWrapper:{
-        backgroundColor: '#f4f9ff',
-        padding: '.5rem',
+        backgroundColor: theme.colors.white,
+        padding: theme.padding.small,
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',

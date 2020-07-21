@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles({
     button: {
-     backgroundColor: 'white',
+     backgroundColor: 'transparent',
      border: 'none'
     }
 })

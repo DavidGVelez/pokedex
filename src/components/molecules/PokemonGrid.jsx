@@ -1,6 +1,7 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/styles'
 import Pokemon  from  '../atoms/Pokemon'
+import { theme } from '../../theme'
 const useStyles = makeStyles({
 
     grid:{
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexFlow: 'wrap',
         justifyContent: 'space-evenly',
-        backgroundColor: 'lightBlue',
+        backgroundColor: theme.colors.background,
         width: '500px',
         
     }

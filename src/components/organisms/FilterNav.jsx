@@ -5,6 +5,8 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles({
     filterWrapper:{
+        backgroundColor: '#f4f9ff',
+        padding: '.5rem',
         width: '100%',
         display: 'flex',
         justifyContent: 'space-between',

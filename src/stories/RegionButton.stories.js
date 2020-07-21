@@ -4,7 +4,7 @@ import {storiesOf} from '@storybook/react'
 
 const props = {
     region: 'Jhotto',
-    handleClickRegion: () => console.log("Jhotto")
+    handleClickRegion: () => console.log('jhotto')
 }
 
 

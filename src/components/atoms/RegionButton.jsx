@@ -1,19 +1,19 @@
-import React from 'react'
-import {makeStyles} from '@material-ui/styles'
+import React from "react";
+import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
-    button: {
-     backgroundColor: 'transparent',
-     border: 'none'
-    }
-})
+  button: {
+    backgroundColor: "transparent",
+    border: "none",
+  },
+});
 
+export default function RegionButton({ logo, region, handleClickRegion }) {
+  const classes = useStyles();
 
-export default function RegionButton({logo, region, handleClickRegion}){
-
-    const classes = useStyles()
-
-    return(
-    <button className={classes.button} onClick={handleClickRegion}>{region}</button>
-    )
+  return (
+    <button className={classes.button} onClick={handleClickRegion}>
+      {region}
+    </button>
+  );
 }

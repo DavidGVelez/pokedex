@@ -1,28 +1,31 @@
-import React from 'react'
-import RegionButton from '../atoms/RegionButton'
-import {makeStyles} from '@material-ui/styles'
-import { theme } from '../../theme'
+import React from "react";
+import RegionButton from "../atoms/RegionButton";
+import { makeStyles } from "@material-ui/styles";
+import { theme } from "../../theme";
 
 const useStyles = makeStyles({
-    regionList: {
-        padding: 0,
-        listStyleType:'none',
-        display: 'flex',
-        '&> li > button':{
-            margin: theme.margin["y-axixs"].small,
-            textTransform: 'capitalize',
-            fontSize: theme.fontSize.medium,
-        } 
+  regionList: {
+    padding: 0,
+    listStyleType: "none",
+    display: "flex",
+    "&> li > button": {
+      margin: theme.margin["y-axixs"].small,
+      textTransform: "capitalize",
+      fontSize: theme.fontSize.medium,
     },
-})
+  },
+});
 
-export default function RegionBar({regionList}){
+export default function RegionBar({ regionList }) {
+  const classes = useStyles();
 
-const classes = useStyles()
-
-return(
+  return (
     <ul className={classes.regionList}>
-        {regionList.map( item => <li><RegionButton {...item}/></li>)}
+      {regionList.map((item) => (
+        <li>
+          <RegionButton {...item} />
+        </li>
+      ))}
     </ul>
-)
+  );
 }

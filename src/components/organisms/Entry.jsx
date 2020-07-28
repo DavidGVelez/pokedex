@@ -82,6 +82,7 @@ export default function Entry({
   description,
 }) {
   const classes = useStyles();
+
   return (
     <div className={classes.card}>
       <div className={classes.topWrapper}>

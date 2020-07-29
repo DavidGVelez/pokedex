@@ -1,12 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-import Entry from "../atoms/BasicInfo";
 import FilterNav from "../organisms/FilterNav";
 import PokemonGrid from "../molecules/PokemonGrid";
+import Footer from "../organisms/Footer";
 import pikachu from "../../pikachu.json";
 import { theme } from "../../theme";
 
 const useStyles = makeStyles({
+  container: {
+    fontFamily: "Helvetica",
+    backgroundColor: theme.colors.fire,
+    display: "flex",
+    height: "100vh",
+    flexDirection: "column",
+  },
   main: {
     width: "80%",
     margin: "auto",
@@ -15,25 +22,15 @@ const useStyles = makeStyles({
   header: {
     backgroundColor: theme.colors.black,
   },
+  footer: {
+    backgroundColor: "black",
+  },
 });
-const TYPES = [];
-pikachu.types.map((type) =>
-  TYPES.push({ type: type.type.name, name: type.type.name })
-);
-const pokemon = {
-  id: pikachu.id,
-  name: pikachu.name,
-  description: "lorem ipsum",
-  height: pikachu.height,
-  weight: pikachu.weight,
-  url: pikachu.sprites.front_default,
-  types: TYPES,
-};
 
 export default function Pokedex() {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.container}>
       <header className={classes.header}>
         <FilterNav
           regionList={[
@@ -104,6 +101,7 @@ export default function Pokedex() {
           ]}
         />
       </main>
+      <Footer />
     </div>
   );
 }

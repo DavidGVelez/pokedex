@@ -1,5 +1,5 @@
 import React from "react";
-import Entry from "../components/organisms/Entry";
+import BasicInfo from "../components/atoms/BasicInfo";
 import pikachu from "../pikachu.json";
 
 const TYPES = [];
@@ -16,9 +16,9 @@ const props = {
   types: TYPES,
 };
 
-export const entry = () => <Entry {...props} />;
+export const basicinfo = () => <BasicInfo {...props} />;
 
 export default {
-  component: entry,
-  title: "Organisms|Entry",
+  component: basicinfo,
+  title: "Organisms|Basic Info",
 };

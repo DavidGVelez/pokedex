@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     padding: 0,
     listStyleType: "none",
     display: "flex",
+    flexWrap: "wrap",
     "&> li > button": {
       margin: theme.margin["y-axixs"].small,
       textTransform: "capitalize",

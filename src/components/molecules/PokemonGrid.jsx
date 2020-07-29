@@ -1,15 +1,19 @@
 import React from "react";
+import Pokemon from "../atoms/Pokemon";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
 const useStyles = makeStyles({
   grid: {
     margin: "auto",
-    padding: ".5rem 1rem",
+    width: "35rem",
+    height: "500px",
+    overflow: "auto",
+    padding: "2rem",
     display: "flex",
     flexFlow: "wrap",
     justifyContent: "space-evenly",
-    backgroundColor: theme.colors.background,
-    width: "500px",
+    listStyleType: "none",
+    backgroundColor: theme.colors.white,
   },
 });
 
@@ -17,6 +21,12 @@ export default function PokemonGrid(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.grid}>{props.data.map((pokemon) => pokemon)}</div>
+    <ul className={classes.grid}>
+      {props.data.map((pokemon) => (
+        <li>
+          <Pokemon url={pokemon.url} name={pokemon.name} id={pokemon.id} />
+        </li>
+      ))}
+    </ul>
   );
 }

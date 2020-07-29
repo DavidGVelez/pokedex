@@ -6,12 +6,13 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   filterWrapper: {
-    backgroundColor: theme.colors.white,
-    padding: theme.padding.small,
-    width: "100%",
     display: "flex",
+    flexWrap: "wrap",
+    margin: "auto",
+    padding: "2rem 0",
     justifyContent: "space-between",
     alignItems: "center",
+    width: "80%",
     "&> input": {
       align: "center",
     },

@@ -4,6 +4,7 @@ import pikachu from "../pikachu.json";
 
 const props = {
   name: pikachu.name,
+  id: pikachu.id,
   url: pikachu.sprites.front_default,
 };
 

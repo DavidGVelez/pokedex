@@ -4,12 +4,36 @@ import Pokemon from "../components/atoms/Pokemon";
 import pikachu from "../pikachu.json";
 
 const data = [
-  <Pokemon url={pikachu.sprites.front_default} />,
-  <Pokemon url={pikachu.sprites.front_default} />,
-  <Pokemon url={pikachu.sprites.front_default} />,
-  <Pokemon url={pikachu.sprites.front_default} />,
-  <Pokemon url={pikachu.sprites.front_default} />,
-  <Pokemon url={pikachu.sprites.front_default} />,
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
+  {
+    name: pikachu.name,
+    id: pikachu.id,
+    url: pikachu.sprites.front_default,
+  },
 ];
 
 export const pokemonGrid = () => <PokemonGrid {...{ data }} />;

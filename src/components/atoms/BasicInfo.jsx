@@ -9,19 +9,19 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
-    width: "60rem",
-    height: "30rem",
-    backgroundColor: theme.colors.white,
+    width: "30rem",
+    backgroundColor: theme.colors.background,
   },
   topWrapper: {
-    height: "14rem",
+    height: "7rem",
     padding: theme.padding["x-axis"].large,
     width: "100%",
     margin: "auto",
-    border: "1px solid black",
+    // border: "1px solid black",
     display: "flex",
     justifyContent: "space-evenly",
     flexDirection: "row",
+    backgroundColor: theme.colors.white,
   },
   sprite: {
     width: "100%",
@@ -34,36 +34,32 @@ const useStyles = makeStyles({
   topInfo: {
     display: "flex",
     width: "100%",
-    height: "3rem",
+    height: "1.5rem",
     justifyContent: "space-around",
     flexDirection: "column",
   },
   types: {
     display: "inherit",
-    height: "3rem",
     alignItems: "center",
   },
   bottomInfo: {
     width: "30%",
-    height: "6rem",
+    height: "3rem",
   },
   infoWrapper: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     width: "40rem",
-    backgroundColor: "white",
   },
 
   text: {
     padding: theme.padding.medium,
-    fontFamily: "Roboto",
     color: "#292929",
   },
   description: {
-    height: "10rem",
+    height: "5rem",
     width: "100%",
-    backgroundColor: "white",
   },
   name: {
     fontSize: theme.fontSize.large,
@@ -71,7 +67,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Entry({
+export default function BasicInfo({
   types,
   name,
   weight,
@@ -84,26 +80,24 @@ export default function Entry({
   const classes = useStyles();
 
   return (
-    <div className={classes.card}>
-      <div className={classes.topWrapper}>
-        <div className={classes.portrait}>
-          <img className={classes.sprite} src={`${url}`} alt={alt} />
-        </div>
-        <div className={classes.infoWrapper}>
-          <div className={classes.topInfo}>
-            <div className={classes.name}>
-              <span className={classes.text}>{`${id} - ${name}`}</span>
+    <div className={classes.wrapper}>
+      <div className={classes.card}>
+        <div className={classes.topWrapper}>
+          <div className={classes.portrait}>
+            <img className={classes.sprite} src={`${url}`} alt={alt} />
+          </div>
+          <div className={classes.infoWrapper}>
+            <div className={classes.topInfo}>
+              <div className={classes.name}>
+                <span className={classes.text}>{`${id} - ${name}`}</span>
+              </div>
             </div>
-          </div>
-          <div className={classes.types}>{<Types types={types} />}</div>
-          <div className={classes.bottomInfo}>
-            <div className={classes.text}>{`Weight ${weight / 10} kg`}</div>
-            <div className={classes.text}>{`Height ${height / 10} cm`}</div>
+            <div className={classes.types}>{<Types types={types} />}</div>
           </div>
         </div>
-      </div>
-      <div className={classes.description}>
+        {/* <div className={classes.description}>
         <p className={classes.text}>{description}</p>
+      </div> */}
       </div>
     </div>
   );

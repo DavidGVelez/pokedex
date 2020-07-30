@@ -1,5 +1,5 @@
 import React from "react";
-import MoreInfo from "../components/atoms/MoreInfo";
+import PokemonHeader from "../components/organisms/PokemonHeader";
 import pikachu from "../pikachu.json";
 
 const TYPES = [];
@@ -12,13 +12,21 @@ const props = {
   description: "lorem ipsum",
   height: pikachu.height,
   weight: pikachu.weight,
-  url: pikachu.sprites.front_default,
+  img: pikachu.sprites.front_default,
   types: TYPES,
+  stats: {
+    hp: 100,
+    attack: 90,
+    defense: 25,
+    spAttack: 57,
+    spDef: 23,
+    speed: 14,
+  },
 };
 
-export const moreinfo = () => <MoreInfo {...props} />;
+export const pokemonheader = () => <PokemonHeader {...props} />;
 
 export default {
-  component: moreinfo,
-  title: "Organisms|More Info",
+  component: pokemonheader,
+  title: "Organisms|Pokemon Header",
 };

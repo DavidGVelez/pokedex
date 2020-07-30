@@ -1,68 +1,67 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
-import Types from "../molecules/Types";
-import Stats from "../atoms/Stats";
 const useStyles = makeStyles({
-  wrapper: {
-    padding: theme.padding["x-axis"].large,
+  container: {
     margin: "auto",
     maxWidth: "600px",
     display: "flex",
-    flexDirection: "column",
     backgroundColor: theme.colors.white,
-  },
-  basicInfo: {
-    width: "100%",
-    margin: "auto",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    // padding: theme.padding["y-axis"].medium,
-    "&> div": {
-      flexGrow: 1,
-    },
-  },
-  img: {
-    width: "150px",
-  },
-  stats: {
-    flexGrow: 1,
-  },
-  types: {
-    width: "100%",
-    "&> div": {
-      display: "flex",
-      justifyContent: "center",
-    },
-  },
-  flavor: {
+    flexWrap: "wrap",
     padding: "0 1rem",
+  },
+  row: {
+    display: "inherit",
+    width: "50%",
+    margin: ".5rem 0",
+
+    "&>span": {
+      width: "60%",
+    },
+    "&> h4": {
+      margin: "0",
+      width: "40%",
+    },
   },
 });
 
 export default function BasicInfo({
-  types,
-  name,
-  url,
-  stats,
-  subname = "missing",
-  flavourText = "lorem Ipsum",
+  height = 0,
+  weight = 0,
+  eggGroup = "patata",
+  captureRate = 0,
+  hatchSteps = 0,
+  gender = [0, 1],
 }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.basicInfo}>
-        <img className={classes.img} src={url} alt={name} />
-        <Stats {...stats} />
+    <div className={classes.container}>
+      <div className={classes.row}>
+        <h4>Height:</h4>
+        <span>{height}</span>
       </div>
-      <div className={classes.types}>
-        <Types {...{ types }} />
+      <div className={classes.row}>
+        <h4>Weight:</h4>
+        <span>{weight}</span>
       </div>
-      <div className={classes.flavor}>
-        <h3>{subname} Pokemon</h3>
-        <p>{flavourText}</p>
+      <div className={classes.row}>
+        <h4>Egg Group:</h4>
+        <span>{eggGroup}</span>
+      </div>
+      <div className={classes.row}>
+        <h4>Capure Rate:</h4>
+        <span>{captureRate}</span>
+      </div>
+      <div className={classes.row}>
+        <h4>Hatch Steps:</h4>
+        <span>{hatchSteps}</span>
+      </div>
+      <div className={classes.row}>
+        <h4>Gender:</h4>
+        <span>
+          ♂ {gender[0]}%/ ♀{gender[1]}%
+        </span>
       </div>
     </div>
   );

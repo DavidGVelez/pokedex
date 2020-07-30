@@ -70,32 +70,32 @@ export default function Pokedex() {
           data={[
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 0,
               url: pikachu.sprites.front_default,
             },
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 1,
               url: pikachu.sprites.front_default,
             },
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 2,
               url: pikachu.sprites.front_default,
             },
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 3,
               url: pikachu.sprites.front_default,
             },
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 4,
               url: pikachu.sprites.front_default,
             },
             {
               name: pikachu.name,
-              id: pikachu.id,
+              id: 5,
               url: pikachu.sprites.front_default,
             },
           ]}

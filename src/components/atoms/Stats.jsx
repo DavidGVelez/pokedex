@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   statWrapper: {
-    maxWidth: "300px",
+    maxWidth: " 350px",
     display: "flex",
     flexDirection: "column",
   },

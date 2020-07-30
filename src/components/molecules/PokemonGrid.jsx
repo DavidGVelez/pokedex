@@ -1,5 +1,5 @@
 import React from "react";
-import Pokemon from "../atoms/Pokemon";
+import PokemonEntry from "../atoms/PokemonEntry";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
 const useStyles = makeStyles({
@@ -25,7 +25,11 @@ export default function PokemonGrid(props) {
       <ul className={classes.grid}>
         {props.data.map((pokemon) => (
           <li>
-            <Pokemon url={pokemon.url} name={pokemon.name} id={pokemon.id} />
+            <PokemonEntry
+              url={pokemon.url}
+              name={pokemon.name}
+              id={pokemon.id}
+            />
           </li>
         ))}
       </ul>

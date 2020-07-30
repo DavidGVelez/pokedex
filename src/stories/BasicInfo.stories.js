@@ -14,6 +14,14 @@ const props = {
   weight: pikachu.weight,
   url: pikachu.sprites.front_default,
   types: TYPES,
+  stats: {
+    hp: 100,
+    attack: 90,
+    defense: 25,
+    spAttack: 57,
+    spDef: 23,
+    speed: 14,
+  },
 };
 
 export const basicinfo = () => <BasicInfo {...props} />;

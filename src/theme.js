@@ -35,7 +35,7 @@ export const theme = {
       medium: "1rem 0",
       large: "2rem 0",
     },
-    "y-axixs": {
+    "y-axis": {
       small: "0 .5rem",
       medium: "0 1rem",
       large: "0 2rem",

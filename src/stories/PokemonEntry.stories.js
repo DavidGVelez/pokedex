@@ -1,5 +1,5 @@
 import React from "react";
-import Pokemon from "../components/atoms/Pokemon";
+import PokemonEntry from "../components/atoms/PokemonEntry";
 import pikachu from "../pikachu.json";
 
 const props = {
@@ -8,9 +8,9 @@ const props = {
   url: pikachu.sprites.front_default,
 };
 
-export const pokemon = () => <Pokemon {...props} />;
+export const pokemonentry = () => <PokemonEntry {...props} />;
 
 export default {
-  component: pokemon,
-  title: "Atoms|Pokemon",
+  component: pokemonentry,
+  title: "Atoms|PokemonEntry",
 };

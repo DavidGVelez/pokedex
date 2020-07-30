@@ -28,11 +28,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Pokemon({ id, name, url }) {
+export default function PokemonEntry({ id, name, url }) {
   const classes = useStyles();
 
   return (
-    <button className={classes.row}>
+    <button className={classes.row} onClick={() => console.log({ id })}>
       <img src={url} alt={name} />
       <div className={classes.text}>
         <span># {id}</span>

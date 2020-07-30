@@ -2,11 +2,7 @@ import React from "react";
 import Pill from "../atoms/Pill";
 import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles({
-  container: {
-    display: "flex",
-  },
-});
+const useStyles = makeStyles({});
 
 export default function Types({ types, name }) {
   const classes = useStyles();

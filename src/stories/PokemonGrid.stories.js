@@ -1,6 +1,5 @@
 import React from "react";
 import PokemonGrid from "../components/molecules/PokemonGrid";
-import Pokemon from "../components/atoms/Pokemon";
 import pikachu from "../pikachu.json";
 
 const data = [

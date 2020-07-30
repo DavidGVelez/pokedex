@@ -1,9 +1,8 @@
 # pokedex
 
- React app w/ storybook and api fetch from https://pokeapi.co/
+React app w/ storybook, @material-ui/styles and api fetch from https://pokeapi.co/
 
 ## Commands
 
-    run all - npm start
     run react - npm react
     run storybook - npm storybook

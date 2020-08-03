@@ -9,6 +9,7 @@ import {
   getPokemons,
   getPokemonsByBoundaries,
   getPokemonById,
+  getPokemon,
 } from "../../services/pokemon.services";
 
 const useStyles = makeStyles({
@@ -33,17 +34,13 @@ const useStyles = makeStyles({
 });
 
 export default function Pokedex() {
-  const [pokemonList, setPokemonList] = useState([]);
+  const [list, setList] = useState();
   useEffect(() => {
-    getPokemons(5).then((data) => {
-      console.log("data", data.length);
-      setPokemonList(data);
-    });
+    getPokemons(151).then((data) => setList(data));
   }, []);
-
-  console.log(pokemonList);
   const classes = useStyles();
-  return (
+  console.log("LISTA", list);
+  return list ? (
     <div className={classes.container}>
       <header className={classes.header}>
         <FilterNav
@@ -80,9 +77,11 @@ export default function Pokedex() {
         />
       </header>
       <main className={classes.main}>
-        <PokemonGrid pokemonList={pokemonList} />
+        <PokemonGrid pokemonList={list} />
       </main>
       <Footer />
     </div>
+  ) : (
+    <> </>
   );
 }

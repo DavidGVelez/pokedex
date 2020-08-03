@@ -1,22 +1,29 @@
-export const getPokemonById = (id) =>
+export const getPokemonByUrl = (url) =>
   new Promise((resolve) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((data) =>
-      resolve(data.json())
+    fetch(url).then((data) =>
+      resolve(
+        data.json().then((pokemon) => {
+          console.log(pokemon);
+          return {
+            name: pokemon.name,
+            id: pokemon.id,
+            img: pokemon.sprites.front_default,
+          };
+        })
+      )
     );
   });
 
-export const getPokemonByName = (name) =>
+export const getPokemon = (value) =>
   new Promise((resolve) => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) =>
+    fetch(`https://pokeapi.co/api/v2/pokemon/${value}`).then((data) =>
       resolve(
         data.json().then((data) => {
-          return [
-            {
-              name: data.name,
-              id: data.id,
-              img: data.sprites.front_default,
-            },
-          ];
+          return {
+            name: data.name,
+            id: data.id,
+            img: data.sprites.front_default,
+          };
         })
       )
     );
@@ -46,24 +53,10 @@ export const getPokemonsByBoundaries = (limit, offset) =>
       })
     );
   });
-export const getPokemons = (limit) =>
-  new Promise((resolve) => {
-    let pokemonList = [];
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
-      .then((response) => response.json())
-      .then((data) => {
-        data.results.forEach((pokemon) => {
-          console.log(data);
-          fetch(pokemon.url).then((response) =>
-            response.json().then((value) =>
-              pokemonList.push({
-                name: value.name,
-                id: value.id,
-                img: value.sprites.front_default,
-              })
-            )
-          );
-        });
-      })
-      .then(resolve(pokemonList));
-  });
+export const getPokemons = (limit) => {
+  const pokemonList = [];
+  for (let i = 1; i <= limit; i++) {
+    pokemonList.push(getPokemon(i));
+  }
+  return Promise.all(pokemonList).then((resolve) => resolve);
+};

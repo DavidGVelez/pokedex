@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonEntry from "../atoms/PokemonEntry";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
@@ -18,11 +18,13 @@ const useStyles = makeStyles({
 });
 
 export default function PokemonGrid({ pokemonList }) {
+  const [data, setData] = useState(pokemonList);
   const classes = useStyles();
+  console.log(data);
   return (
     <div>
       <ul className={classes.grid}>
-        {pokemonList.map((pokemon) => (
+        {data.map((pokemon) => (
           <li>
             <PokemonEntry
               img={pokemon.img}

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import FilterNav from "../organisms/FilterNav";
 import PokemonGrid from "../molecules/PokemonGrid";
 import Footer from "../organisms/Footer";
-import pikachu from "../../pikachu.json";
 import { theme } from "../../theme";
+import {
+  getPokemonByName,
+  getPokemons,
+  getPokemonsByBoundaries,
+  getPokemonById,
+} from "../../services/pokemon.services";
 
 const useStyles = makeStyles({
   container: {
@@ -28,6 +33,15 @@ const useStyles = makeStyles({
 });
 
 export default function Pokedex() {
+  const [pokemonList, setPokemonList] = useState([]);
+  useEffect(() => {
+    getPokemons(5).then((data) => {
+      console.log("data", data.length);
+      setPokemonList(data);
+    });
+  }, []);
+
+  console.log(pokemonList);
   const classes = useStyles();
   return (
     <div className={classes.container}>
@@ -66,40 +80,7 @@ export default function Pokedex() {
         />
       </header>
       <main className={classes.main}>
-        <PokemonGrid
-          data={[
-            {
-              name: pikachu.name,
-              id: 0,
-              url: pikachu.sprites.front_default,
-            },
-            {
-              name: pikachu.name,
-              id: 1,
-              url: pikachu.sprites.front_default,
-            },
-            {
-              name: pikachu.name,
-              id: 2,
-              url: pikachu.sprites.front_default,
-            },
-            {
-              name: pikachu.name,
-              id: 3,
-              url: pikachu.sprites.front_default,
-            },
-            {
-              name: pikachu.name,
-              id: 4,
-              url: pikachu.sprites.front_default,
-            },
-            {
-              name: pikachu.name,
-              id: 5,
-              url: pikachu.sprites.front_default,
-            },
-          ]}
-        />
+        <PokemonGrid {...{ pokemonList }} />
       </main>
       <Footer />
     </div>

@@ -17,18 +17,18 @@ const useStyles = makeStyles({
   },
 });
 
-export default function PokemonGrid(props) {
+export default function PokemonGrid({ pokemonList }) {
   const classes = useStyles();
-
   return (
     <div>
       <ul className={classes.grid}>
-        {props.data.map((pokemon) => (
+        {pokemonList.map((pokemon) => (
           <li>
             <PokemonEntry
-              url={pokemon.url}
+              img={pokemon.img}
               name={pokemon.name}
               id={pokemon.id}
+              // {...pokemon}
             />
           </li>
         ))}

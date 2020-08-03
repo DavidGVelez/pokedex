@@ -39,11 +39,11 @@ export default function BasicInfo({
     <div className={classes.container}>
       <div className={classes.row}>
         <h4>Height:</h4>
-        <span>{height}</span>
+        <span>{height / 10} m</span>
       </div>
       <div className={classes.row}>
         <h4>Weight:</h4>
-        <span>{weight}</span>
+        <span>{weight / 10} kg</span>
       </div>
       <div className={classes.row}>
         <h4>Egg Group:</h4>
@@ -51,7 +51,7 @@ export default function BasicInfo({
       </div>
       <div className={classes.row}>
         <h4>Capure Rate:</h4>
-        <span>{captureRate}</span>
+        <span>{captureRate} %</span>
       </div>
       <div className={classes.row}>
         <h4>Hatch Steps:</h4>

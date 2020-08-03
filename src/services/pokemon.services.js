@@ -49,13 +49,19 @@ export const getPokemonsByBoundaries = (limit, offset) =>
 export const getPokemons = (limit) =>
   new Promise((resolve) => {
     let pokemonList = [];
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=5")
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
       .then((response) => response.json())
       .then((data) => {
         data.results.forEach((pokemon) => {
           console.log(data);
           fetch(pokemon.url).then((response) =>
-            response.json().then((value) => pokemonList.push(value))
+            response.json().then((value) =>
+              pokemonList.push({
+                name: value.name,
+                id: value.id,
+                img: value.sprites.front_default,
+              })
+            )
           );
         });
       })

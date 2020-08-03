@@ -80,7 +80,7 @@ export default function Pokedex() {
         />
       </header>
       <main className={classes.main}>
-        <PokemonGrid {...{ pokemonList }} />
+        <PokemonGrid pokemonList={pokemonList} />
       </main>
       <Footer />
     </div>

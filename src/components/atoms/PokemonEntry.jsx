@@ -30,7 +30,6 @@ const useStyles = makeStyles({
 
 export default function PokemonEntry({ id, name, img }) {
   const classes = useStyles();
-  console.log("imagen", img);
   return (
     <button className={classes.row} onClick={() => console.log({ id })}>
       <img src={img} alt={name} />

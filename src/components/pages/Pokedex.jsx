@@ -4,13 +4,8 @@ import FilterNav from "../organisms/FilterNav";
 import PokemonGrid from "../molecules/PokemonGrid";
 import Footer from "../organisms/Footer";
 import { theme } from "../../theme";
-import {
-  getPokemonByName,
-  getPokemons,
-  getPokemonsByBoundaries,
-  getPokemonById,
-  getPokemon,
-} from "../../services/pokemon.services";
+import { REGIONS } from "../../constants";
+import { getPokemonsByBoundaries } from "../../services/pokemon.services";
 
 const useStyles = makeStyles({
   container: {
@@ -35,11 +30,14 @@ const useStyles = makeStyles({
 
 export default function Pokedex() {
   const [list, setList] = useState();
+  const [limit, setLimit] = useState(REGIONS.hoenn.limit);
+  const [offset, setOffset] = useState(REGIONS.hoenn.offset);
   useEffect(() => {
-    getPokemons(151).then((data) => setList(data));
-  }, []);
+    getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
+    // getPokemons(200, 1).then((data) => setList(data));
+    // fetchPokemon().then((data) => setList(data));
+  }, [limit, offset]);
   const classes = useStyles();
-  console.log("LISTA", list);
   return list ? (
     <div className={classes.container}>
       <header className={classes.header}>
@@ -82,6 +80,8 @@ export default function Pokedex() {
       <Footer />
     </div>
   ) : (
-    <> </>
+    <>
+      <h1>Loading</h1>{" "}
+    </>
   );
 }

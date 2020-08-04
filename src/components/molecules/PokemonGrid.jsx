@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 export default function PokemonGrid({ pokemonList }) {
   const [data, setData] = useState(pokemonList);
   const classes = useStyles();
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <ul className={classes.grid}>
@@ -30,6 +30,7 @@ export default function PokemonGrid({ pokemonList }) {
               img={pokemon.img}
               name={pokemon.name}
               id={pokemon.id}
+
               // {...pokemon}
             />
           </li>

@@ -6,18 +6,34 @@ export const getPokemonByUrl = (url) =>
   });
 
 export const getPokemon = (value) =>
-  new Promise((resolve) => {
-    fetch(`${BASE_URL}pokemon/${value}`).then((data) =>
-      resolve(
-        data.json().then((pokemon) => {
-          return {
-            name: pokemon.name,
-            id: pokemon.id,
-            img: pokemon.sprites.front_default,
-          };
-        })
-      )
-    );
+  new Promise((resolve, reject) => {
+    fetch(`${BASE_URL}pokemon/${value}`).then((data) => {
+      if (data.ok) {
+        resolve(
+          data.json().then((pokemon) => {
+            const types = [];
+            pokemon.types.map((type) =>
+              types.push({ type: type.type.name, name: type.type.name })
+            );
+            return {
+              ...pokemon,
+              name: pokemon.species.name,
+              img: pokemon.sprites.front_default,
+              stats: {
+                hp: pokemon.stats[0].base_stat,
+                attack: pokemon.stats[1].base_stat,
+                defense: pokemon.stats[2].base_stat,
+                spAttack: pokemon.stats[3].base_stat,
+                spDef: pokemon.stats[4].base_stat,
+                speed: pokemon.stats[5].base_stat,
+              },
+              types: types,
+            };
+          })
+        );
+      }
+      reject(() => console.log(data.error));
+    });
   });
 export const getPokemonsByBoundaries = async (limit, offset) => {
   var asdf = [];

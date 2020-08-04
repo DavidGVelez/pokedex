@@ -7,5 +7,4 @@ export const REGIONS = {
   teselia: { limit: 124, offset: 386 },
   kalos: { limit: 147, offset: 493 },
   alola: { limit: 151, offset: 650 },
-  // galar: {limit: 151, ofsset: 0},
 };

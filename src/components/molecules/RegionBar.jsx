@@ -1,7 +1,8 @@
 import React from "react";
-import RegionButton from "../atoms/RegionButton";
+import Button from "../atoms/Button";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   regionList: {
@@ -9,7 +10,7 @@ const useStyles = makeStyles({
     listStyleType: "none",
     display: "flex",
     flexWrap: "wrap",
-    "&> li > button": {
+    "&> li > button, &>li > a > button": {
       margin: theme.margin["y-axixs"].small,
       textTransform: "capitalize",
       fontSize: theme.fontSize.medium,
@@ -17,16 +18,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function RegionBar({ regionList }) {
+export default function RegionBar({ regionList, handleClickRegion }) {
   const classes = useStyles();
 
   return (
     <ul className={classes.regionList}>
       {regionList.map((item) => (
         <li>
-          <RegionButton {...item} />
+          <Button {...item} handleClick={item.handleClickRegion} />
         </li>
       ))}
+      {/* <li>
+        <Link to="/typeChart">
+          <Button text={"Tipos"} />
+        </Link>
+      </li> */}
     </ul>
   );
 }

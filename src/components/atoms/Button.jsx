@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function RegionButton({ logo, region, handleClickRegion }) {
+export default function Button({ text, handleClick }) {
   const classes = useStyles();
 
   return (
-    <button className={classes.button} onClick={handleClickRegion}>
-      {region}
+    <button className={classes.button} onClick={() => handleClick(text)}>
+      {text}
     </button>
   );
 }

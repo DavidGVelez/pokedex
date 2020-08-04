@@ -26,8 +26,8 @@ const useStyles = makeStyles({
 });
 
 export default function BasicInfo({
-  height = 0,
-  weight = 0,
+  height,
+  weight,
   eggGroup = "patata",
   captureRate = 0,
   hatchSteps = 0,

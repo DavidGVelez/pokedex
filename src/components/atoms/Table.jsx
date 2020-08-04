@@ -1,10 +1,12 @@
 import React from "react";
 import Pill from "../atoms/Pill";
 import { makeStyles } from "@material-ui/styles";
+import { theme } from "../../theme";
 
 const useStyles = makeStyles({
   table: {
     width: "80%",
+    background: theme.colors.white,
   },
   theadTop: {
     width: "0",

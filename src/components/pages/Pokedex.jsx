@@ -4,7 +4,7 @@ import FilterNav from "../organisms/FilterNav";
 import PokemonGrid from "../molecules/PokemonGrid";
 import Footer from "../organisms/Footer";
 import { theme } from "../../theme";
-import { REGIONS } from "../../constants";
+import { REGIONS, MAX_LIMIT } from "../../constants";
 import { getPokemonsByBoundaries } from "../../services/pokemon.services";
 
 const useStyles = makeStyles({
@@ -30,14 +30,13 @@ const useStyles = makeStyles({
 
 export default function Pokedex() {
   const [list, setList] = useState();
-  const [limit, setLimit] = useState(REGIONS.hoenn.limit);
-  const [offset, setOffset] = useState(REGIONS.hoenn.offset);
+  const [limit, setLimit] = useState(REGIONS.kanto.limit);
+  const [offset, setOffset] = useState(REGIONS.kanto.offset);
   useEffect(() => {
     getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
-    // getPokemons(200, 1).then((data) => setList(data));
-    // fetchPokemon().then((data) => setList(data));
   }, [limit, offset]);
   const classes = useStyles();
+  console.log("LISTA", list);
   return list ? (
     <div className={classes.container}>
       <header className={classes.header}>

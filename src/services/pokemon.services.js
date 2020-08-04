@@ -19,42 +19,42 @@ export const getPokemon = (value) =>
       )
     );
   });
-// NOT WORKING MIGHT DELETE
-// export const getPokemonsByBoundaries = (limit, offset) => {
-//   const pokemonList = [];
-//   fetch(
-//     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-//   ).then((res) =>
-//     res.json().then((data) => {
-//       data.results.forEach((item) =>
-//         pokemonList.push(
-//           getPokemonByUrl(item.url).then((data) => data.PromiseValue)
-//         )
-//       );
-//     })
-//   );
-//   console.log("lista", pokemonList);
-//   return Promise.all(pokemonList).then((resolve) => console.log(resolve));
-// };
 export const getPokemonsByBoundaries = async (limit, offset) => {
-  const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const pokemon = data.results.map((data, index) => ({
-    name: data.name,
-    id: offset + index + 1,
-    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-      index + offset + 1
-    }.png`,
-  }));
+  var asdf = [];
+  await fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+  ).then((res) =>
+    res.json().then((data) => {
+      data.results.forEach((item) => {
+        asdf.push(fetch(item.url).then((data) => data.json()));
+      });
+    })
+  );
 
-  return pokemon;
+  return await Promise.all(asdf).then((values) => {
+    const PokemonList = [];
+    values.forEach((item) => {
+      PokemonList.push({
+        name: item.species.name,
+        id: item.id,
+        img: item.sprites.front_default,
+      });
+    });
+    return PokemonList;
+  });
 };
-// TOO SLOW MIGHT DELETE
-// export const getPokemons = (limit, offset) => {
-//   const pokemonList = [];
-//   for (let i = offset; i <= limit; i++) {
-//     pokemonList.push(getPokemon(i));
-//   }
-//   return Promise.all(pokemonList).then((resolve) => resolve);
+// OPTION 2
+// export const getPokemonsByBoundaries = async (limit, offset) => {
+//   const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
+//   const res = await fetch(url);
+//   const data = await res.json();
+//   const pokemon = data.results.map((data, index) => ({
+//     name: data.name,
+//     id: offset + index + 1,
+//     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+//       index + offset + 1
+//     }.png`,
+//   }));
+
+//   return pokemon;
 // };

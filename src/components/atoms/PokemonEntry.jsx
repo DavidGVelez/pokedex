@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     },
   },
   text: {
-    width: "50%",
+    flexGrow: 1,
     display: "inherit",
     textTransform: "uppercase",
     justifyContent: "space-between",

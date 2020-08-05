@@ -13,12 +13,12 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Button({ text, handleClick }) {
+export default function Button({ children, text, handleClick }) {
   const classes = useStyles();
 
   return (
     <button className={classes.button} onClick={() => handleClick(text)}>
-      {text}
+      {children ? children : text}
     </button>
   );
 }

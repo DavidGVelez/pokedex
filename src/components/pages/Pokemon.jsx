@@ -3,9 +3,10 @@ import { makeStyles } from "@material-ui/styles";
 import PokemonHeader from "../organisms/PokemonHeader";
 import Title from "../atoms/Title";
 import BasicInfo from "../atoms/BasicInfo";
+import Button from "../atoms/Button";
 import { theme } from "../../theme";
 const useStyles = makeStyles({
-  container: {
+  pokemon: {
     maxWidth: "600px",
     margin: "auto",
     backgroundColor: theme.colors.white,
@@ -27,7 +28,7 @@ export default function Pokemon({
 }) {
   const classes = useStyles();
   return id ? (
-    <div className={classes.container}>
+    <div id="pokemon" className={classes.pokemon}>
       <Title text={name} size="h1" />
       <div className={classes.infoWrapper}>
         <PokemonHeader

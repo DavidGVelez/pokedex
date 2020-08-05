@@ -12,7 +12,8 @@ import {
   getPokemonsByBoundaries,
   getPokemon,
 } from "../../services/pokemon.services";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
+import Modal from "../atoms/Modal";
 
 const tabla = {
   thead: [
@@ -455,7 +456,7 @@ const tabla = {
 };
 
 const useStyles = makeStyles({
-  container: {
+  mainContainer: {
     fontFamily: "Helvetica",
     backgroundColor: theme.colors.fire,
     display: "flex",
@@ -484,86 +485,93 @@ export default function Main() {
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
+  }, [limit, offset]);
+  useEffect(() => {
     getPokemon(pokemonId).then((data) => setPokemonData(data));
-  }, [limit, offset, pokemonId, pokemonData]);
+  }, [pokemonId]);
   const classes = useStyles();
 
-  const renderModal = () => <Pokemon {...pokemonData} />;
+  const renderModal = () => (
+    <Modal
+      children={<Pokemon {...pokemonData} />}
+      handleClickClose={(e) => {
+        setOpenModal(!openModal);
+        if (e.target.id !== "pokemon") {
+        }
+      }}
+    />
+  );
   return list ? (
-    openModal === true ? (
-      renderModal()
-    ) : (
-      <div className={classes.container}>
-        <header className={classes.header}>
-          <FilterNav
-            regionList={[
-              {
-                text: "kanto",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+    <div className={classes.mainContainer}>
+      <header className={classes.header}>
+        <FilterNav
+          regionList={[
+            {
+              text: "kanto",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-              {
-                text: "jhotto",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+            },
+            {
+              text: "jhotto",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-              {
-                text: "hoenn",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+            },
+            {
+              text: "hoenn",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-              {
-                text: "teselia",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+            },
+            {
+              text: "teselia",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-              {
-                text: "kalos",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+            },
+            {
+              text: "kalos",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-              {
-                text: "alola",
-                handleClickRegion: (region) => {
-                  setLimit(REGIONS[region].limit);
-                  setOffset(REGIONS[region].offset);
-                },
+            },
+            {
+              text: "alola",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
               },
-            ]}
-          />
-        </header>
-        <main className={classes.main}>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <PokemonGrid
-                  pokemonList={list}
-                  handleShowInfo={(id) => {
-                    console.log(id);
-                    setPokemonId(id);
-
-                    setOpenModal(!openModal);
-                  }}
-                />
-              )}
-            ></Route>
-          </Switch>
-        </main>
-        <Footer />
-      </div>
-    )
+            },
+          ]}
+        />
+      </header>
+      <main className={classes.main}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <PokemonGrid
+                pokemonList={list}
+                handleShowInfo={(id) => {
+                  console.log(id);
+                  setPokemonId(id);
+                  setOpenModal(!openModal);
+                }}
+              />
+            )}
+          ></Route>
+        </Switch>
+      </main>
+      <Footer />
+      {openModal === true ? renderModal() : null}
+    </div>
   ) : (
     <>
       <h1>Loading</h1>

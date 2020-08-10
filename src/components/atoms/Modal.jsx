@@ -5,7 +5,6 @@ import { theme } from "../../theme";
 const useStyles = makeStyles({
   modal: {
     margin: "auto",
-    paddingTop: "2rem",
     position: "fixed",
     backgroundColor: "rgba(0,0,0,0.8)",
     top: 0,
@@ -16,7 +15,6 @@ const useStyles = makeStyles({
   },
   backButton: {
     width: "35px",
-    padding: "2rem",
     filter: "contrast(100%)",
   },
   child: {
@@ -33,16 +31,17 @@ export default function Modal({ handleClickClose, children }) {
   const classes = useStyles();
   return (
     <div className={classes.modal} onClick={handleClickClose}>
-      {/* <Button
-          children={
-            <img
-              className={classes.backButton}
-              src={process.env.PUBLIC_URL + "/left-arrow.png"}
-              alt="arrow"
-            ></img>
-          }
-          handleClick={handleClickClose}
-        /> */}
+      <Button
+        children={
+          <img
+            className={classes.backButton}
+            src={process.env.PUBLIC_URL + "/left-arrow.png"}
+            alt="arrow"
+          ></img>
+        }
+        noHover
+        handleClick={handleClickClose}
+      />
       <section className={classes.child} onClick={(e) => notClosingModal(e)}>
         {children}
       </section>

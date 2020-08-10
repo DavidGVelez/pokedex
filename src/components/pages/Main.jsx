@@ -12,7 +12,7 @@ import {
   getPokemonsByBoundaries,
   getPokemon,
 } from "../../services/pokemon.services";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "../atoms/Modal";
 
 const tabla = {
@@ -486,18 +486,16 @@ export default function Main() {
   useEffect(() => {
     getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
   }, [limit, offset]);
-  useEffect(() => {
-    getPokemon(pokemonId).then((data) => setPokemonData(data));
-  }, [pokemonId]);
+  // useEffect(() => {
+  //   getPokemon(pokemonId).then((data) => setPokemonData(data));
+  // }, [pokemonId]);
   const classes = useStyles();
 
   const renderModal = () => (
     <Modal
-      children={<Pokemon {...pokemonData} />}
+      children={<Pokemon id={pokemonId} />}
       handleClickClose={(e) => {
         setOpenModal(!openModal);
-        if (e.target.id !== "pokemon") {
-        }
       }}
     />
   );
@@ -552,22 +550,14 @@ export default function Main() {
         />
       </header>
       <main className={classes.main}>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <PokemonGrid
-                pokemonList={list}
-                handleShowInfo={(id) => {
-                  console.log(id);
-                  setPokemonId(id);
-                  setOpenModal(!openModal);
-                }}
-              />
-            )}
-          ></Route>
-        </Switch>
+        <PokemonGrid
+          pokemonList={list}
+          handleShowInfo={(id) => {
+            setPokemonId(id);
+            setOpenModal(!openModal);
+          }}
+        />
+        )
       </main>
       <Footer />
       {openModal === true ? renderModal() : null}

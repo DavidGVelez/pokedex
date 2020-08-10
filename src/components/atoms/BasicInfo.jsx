@@ -28,13 +28,17 @@ const useStyles = makeStyles({
 export default function BasicInfo({
   height,
   weight,
-  eggGroup = "patata",
+  eggGroup = [],
   captureRate = 0,
   hatchSteps = 0,
-  gender = [0, 1],
+  genderRate,
 }) {
   const classes = useStyles();
-
+  const genders = (genderRate) => {
+    const femaleRate = genderRate / 8;
+    const maleRate = 1 - femaleRate;
+    return `♂ ${maleRate * 100} %/ ♀ ${femaleRate * 100}%`;
+  };
   return (
     <div className={classes.container}>
       <div className={classes.row}>
@@ -47,21 +51,20 @@ export default function BasicInfo({
       </div>
       <div className={classes.row}>
         <h4>Egg Group:</h4>
-        <span>{eggGroup}</span>
+
+        <span>{eggGroup.join(", ")}</span>
       </div>
       <div className={classes.row}>
         <h4>Capure Rate:</h4>
-        <span>{captureRate} %</span>
+        <span>{Math.round((captureRate * 100) / 255)} %</span>
       </div>
       <div className={classes.row}>
         <h4>Hatch Steps:</h4>
-        <span>{hatchSteps}</span>
+        <span>{255 * (hatchSteps + 1)}</span>
       </div>
       <div className={classes.row}>
         <h4>Gender:</h4>
-        <span>
-          ♂ {gender[0]}%/ ♀{gender[1]}%
-        </span>
+        <span>{genders(genderRate)}</span>
       </div>
     </div>
   );

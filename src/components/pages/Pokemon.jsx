@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import PokemonHeader from "../organisms/PokemonHeader";
 import Title from "../atoms/Title";
+import InfoContainer from "../atoms/InfoContainer";
 import BasicInfo from "../atoms/BasicInfo";
-import Button from "../atoms/Button";
 import { theme } from "../../theme";
+import {
+  getPokemon,
+  getPokemonSpeciesData,
+} from "../../services/pokemon.services";
 const useStyles = makeStyles({
   pokemon: {
     maxWidth: "600px",
@@ -15,31 +19,28 @@ const useStyles = makeStyles({
     padding: "1rem",
   },
 });
-export default function Pokemon({
-  id,
-  img,
-  name,
-  types,
-  height,
-  weight,
-  stats = [],
-  subname = "sampleSubname",
-  flavour = "sampletext",
-}) {
+export default function Pokemon({ id }) {
+  const [pokemon, setPokemon] = useState({});
+  const [pokemonId] = useState(id);
+  const [pokemonSpecies, setPokemonSpecies] = useState({});
+  useEffect(() => {
+    getPokemon(pokemonId).then((data) => setPokemon(data));
+  }, [pokemonId]);
+  // useEffect(() => {
+
+  // }, [pokemonId]);
+
   const classes = useStyles();
-  return id ? (
+  console.log("pokemon", pokemon);
+  return pokemon ? (
     <div id="pokemon" className={classes.pokemon}>
-      <Title text={name} size="h1" />
+      <Title text={pokemon.name} size="h1" />
       <div className={classes.infoWrapper}>
-        <PokemonHeader
-          {...{ img }}
-          {...{ types }}
-          {...{ stats }}
-          {...{ subname }}
-          {...{ flavour }}
+        <PokemonHeader {...pokemon} />
+        <InfoContainer
+          text={"Basic Info"}
+          children={<BasicInfo {...pokemon} />}
         />
-        <Title text={"Basic Info"} size="h3" />
-        <BasicInfo {...{ height }} {...{ weight }} />
       </div>
     </div>
   ) : (

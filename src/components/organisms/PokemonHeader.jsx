@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 });
 
 export default function PokemonHeader({
-  types,
+  types = [],
   name,
   img,
   stats,

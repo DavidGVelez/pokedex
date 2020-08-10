@@ -11,6 +11,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexWrap: "wrap",
     "&> li > button, &>li > a > button": {
+      padding: " 0 .5rem",
       margin: theme.margin["y-axixs"].small,
       textTransform: "capitalize",
       fontSize: theme.fontSize.medium,

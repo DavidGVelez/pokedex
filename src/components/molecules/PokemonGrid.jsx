@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PokemonEntry from "../atoms/PokemonEntry";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles({
   grid: {
     margin: "auto",
@@ -29,6 +30,7 @@ export default function PokemonGrid({ pokemonList, handleShowInfo }) {
     <ul className={classes.grid}>
       {data.map((pokemon) => (
         <li>
+          {/* <Link to={`/pokemon/${pokemon.id}`}> */}
           <PokemonEntry
             img={pokemon.img}
             name={pokemon.name}
@@ -37,6 +39,7 @@ export default function PokemonGrid({ pokemonList, handleShowInfo }) {
 
             // {...pokemon}
           />
+          {/* </Link> */}
         </li>
       ))}
     </ul>

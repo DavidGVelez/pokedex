@@ -23,6 +23,9 @@ const useStyles = makeStyles({
       width: "40%",
     },
   },
+  eggGroup: {
+    textTransform: "capitalize",
+  },
 });
 
 export default function BasicInfo({
@@ -51,8 +54,7 @@ export default function BasicInfo({
       </div>
       <div className={classes.row}>
         <h4>Egg Group:</h4>
-
-        <span>{eggGroup.join(", ")}</span>
+        <span className={classes.eggGroup}>{eggGroup.join(", ")}</span>
       </div>
       <div className={classes.row}>
         <h4>Capure Rate:</h4>

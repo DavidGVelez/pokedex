@@ -16,6 +16,7 @@ const useStyles = makeStyles({
   backButton: {
     width: "35px",
     filter: "contrast(100%)",
+    cursor: "pointer",
   },
   child: {
     width: "fit-content",

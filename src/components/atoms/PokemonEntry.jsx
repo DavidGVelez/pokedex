@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     "&:hover": {
       // backgroundColor: theme.colors.red,
       boxShadow: " 0 0 11px #555",
+      cursor: "pointer",
     },
   },
   text: {

@@ -557,7 +557,6 @@ export default function Main() {
             setOpenModal(!openModal);
           }}
         />
-        )
       </main>
       <Footer />
       {openModal === true ? renderModal() : null}

@@ -26,9 +26,6 @@ export default function Pokemon({ id }) {
   useEffect(() => {
     getPokemon(pokemonId).then((data) => setPokemon(data));
   }, [pokemonId]);
-  // useEffect(() => {
-
-  // }, [pokemonId]);
 
   const classes = useStyles();
   console.log("pokemon", pokemon);

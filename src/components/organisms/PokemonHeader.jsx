@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
 import Types from "../molecules/Types";
 import Stats from "../atoms/Stats";
+import PropTypes from "prop-types";
+import Pokemon from "../pages/Pokemon";
 const useStyles = makeStyles({
   wrapper: {
     padding: theme.padding["x-axis"].large,
@@ -42,7 +44,7 @@ const useStyles = makeStyles({
 });
 
 export default function PokemonHeader({
-  types = [],
+  types,
   name,
   img,
   stats,
@@ -67,3 +69,14 @@ export default function PokemonHeader({
     </div>
   );
 }
+PokemonHeader.prototypes = {
+  types: PropTypes.array,
+  name: PropTypes.string,
+  img: PropTypes.string,
+  stats: PropTypes.object,
+  subname: PropTypes.string,
+  flavour: PropTypes.string,
+};
+PokemonHeader.defaultProps = {
+  types: [],
+};

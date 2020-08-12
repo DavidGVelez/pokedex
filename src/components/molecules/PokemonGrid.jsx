@@ -25,7 +25,7 @@ export default function PokemonGrid({ pokemonList, handleShowInfo }) {
     setData(pokemonList);
   }, [pokemonList]);
   const classes = useStyles();
-  // console.log(data);
+
   return (
     // <div>
     <ul className={classes.grid}>

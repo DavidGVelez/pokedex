@@ -35,8 +35,6 @@ export default function Pokemon({ id }) {
   }, [pokemon]);
 
   const classes = useStyles();
-  console.log("pokemon", pokemon);
-  console.log("evolution", evolutionChain);
   return pokemon ? (
     <div id="pokemon" className={classes.pokemon}>
       <Title text={pokemon.name} size="h1" />

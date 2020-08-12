@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { getIdFromUrl } from "../../normalize";
+
 const useStyles = makeStyles({
   evolutionWrapper: {
     display: "flex",

@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
+import PropTypes from "prop-types";
+import { render } from "@testing-library/react";
 const useStyles = makeStyles({
   container: {
     margin: "auto",
@@ -31,9 +33,9 @@ const useStyles = makeStyles({
 export default function BasicInfo({
   height,
   weight,
-  eggGroup = [],
-  captureRate = 0,
-  hatchSteps = 0,
+  eggGroup,
+  captureRate,
+  hatchSteps,
   genderRate,
 }) {
   const classes = useStyles();
@@ -71,3 +73,14 @@ export default function BasicInfo({
     </div>
   );
 }
+BasicInfo.prototypes = {
+  height: PropTypes.number,
+  weight: PropTypes.number,
+  eggGroup: PropTypes.array,
+  captureRate: PropTypes.number,
+  genderRate: PropTypes.number,
+  hatchSteps: PropTypes.number,
+};
+BasicInfo.defaultProps = {
+  eggGroup: [],
+};

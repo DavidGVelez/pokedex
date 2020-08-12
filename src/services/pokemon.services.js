@@ -53,7 +53,7 @@ export const getPokemon = (value) =>
         );
       }
 
-      reject(() => console.log(data.error));
+      reject(console.log(data.error));
     });
   });
 export const getPokemonEvolutionChain = (id) =>
@@ -62,7 +62,7 @@ export const getPokemonEvolutionChain = (id) =>
       if (data.ok) {
         resolve(data.json().then((pokemon) => pokemon));
       }
-      reject(() => console.log(data.error));
+      reject(console.log(data.error));
     });
   });
 export const getPokemonSpeciesData = (id) =>
@@ -80,7 +80,7 @@ export const getPokemonSpeciesData = (id) =>
           })
         );
       }
-      reject(() => console.log(data.error));
+      reject(console.log(data.error));
     });
   });
 export const getPokemonsByBoundaries = (limit, offset) => {

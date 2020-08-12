@@ -490,7 +490,6 @@ export default function Main() {
   //   getPokemon(pokemonId).then((data) => setPokemonData(data));
   // }, [pokemonId]);
   const classes = useStyles();
-  console.log(list);
   const renderModal = () => (
     <Modal
       children={<Pokemon id={pokemonId} />}

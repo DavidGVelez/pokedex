@@ -47,3 +47,11 @@ export default function Stats({ hp, attack, defense, spAttack, spDef, speed }) {
     </div>
   );
 }
+Stats.defaultProps = {
+  hp: 0,
+  attack: 0,
+  defense: 0,
+  spAttack: 0,
+  spDef: 0,
+  speed: 0,
+};

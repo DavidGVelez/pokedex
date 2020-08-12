@@ -477,11 +477,11 @@ const useStyles = makeStyles({
 });
 
 export default function Main() {
-  const [list, setList] = useState();
+  const [list, setList] = useState([{}]);
   const [limit, setLimit] = useState(20);
   const [offset, setOffset] = useState(0);
   const [pokemonId, setPokemonId] = useState();
-  const [pokemonData, setPokemonData] = useState();
+  // const [pokemonData, setPokemonData] = useState();
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
@@ -490,7 +490,7 @@ export default function Main() {
   //   getPokemon(pokemonId).then((data) => setPokemonData(data));
   // }, [pokemonId]);
   const classes = useStyles();
-
+  console.log(list);
   const renderModal = () => (
     <Modal
       children={<Pokemon id={pokemonId} />}
@@ -526,6 +526,13 @@ export default function Main() {
               },
             },
             {
+              text: "sinnoh",
+              handleClickRegion: (region) => {
+                setLimit(REGIONS[region].limit);
+                setOffset(REGIONS[region].offset);
+              },
+            },
+            {
               text: "teselia",
               handleClickRegion: (region) => {
                 setLimit(REGIONS[region].limit);
@@ -550,13 +557,15 @@ export default function Main() {
         />
       </header>
       <main className={classes.main}>
-        <PokemonGrid
-          pokemonList={list}
-          handleShowInfo={(id) => {
-            setPokemonId(id);
-            setOpenModal(!openModal);
-          }}
-        />
+        {
+          <PokemonGrid
+            pokemonList={list}
+            handleShowInfo={(id) => {
+              setPokemonId(id);
+              setOpenModal(!openModal);
+            }}
+          />
+        }
       </main>
       <Footer />
       {openModal === true ? renderModal() : null}

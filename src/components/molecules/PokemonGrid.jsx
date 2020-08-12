@@ -3,6 +3,7 @@ import PokemonEntry from "../atoms/PokemonEntry";
 import { makeStyles } from "@material-ui/styles";
 import { theme } from "../../theme";
 import { Link } from "react-router-dom";
+import { IMG_URL } from "../../constants";
 const useStyles = makeStyles({
   grid: {
     margin: "auto",

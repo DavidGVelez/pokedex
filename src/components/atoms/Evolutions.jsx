@@ -1,13 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
-
+import { getIdFromUrl } from "../../normalize";
 const useStyles = makeStyles({
-  container: {
-    width: "50%",
-  },
   evolutionWrapper: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     "& > figure": {
       display: "flex",
       flexDirection: "column",
@@ -26,12 +24,7 @@ const useStyles = makeStyles({
   },
 });
 //WIP
-export default function Evolutions({ data }) {
-  function getIdFromUrl(url) {
-    var str = url.substr(42);
-    return str.replace(/\D/g, "");
-  }
-
+export default function Evolutions({ evolutionChain }) {
   const howEvolves = (evolutionDetails) => {
     var result = ["Evolves "];
     Object.keys(evolutionDetails).forEach((key) => {
@@ -67,7 +60,7 @@ export default function Evolutions({ data }) {
         result.push(`beauty ${evolutionDetails[key].name}`);
       key === "needs_overworld_rain" &&
         evolutionDetails[key] !== false &&
-        result.push(`raining `);
+        result.push(`when raining `);
       key === "party_species" &&
         evolutionDetails[key] !== null &&
         result.push(`having ${evolutionDetails[key].name} on your team`);
@@ -85,21 +78,24 @@ export default function Evolutions({ data }) {
           : result.push(`having more defense than attack `));
       key === "time_of_day" &&
         evolutionDetails[key] !== "" &&
-        result.push(`at ${evolutionDetails[key]} `);
+        result.push(`during ${evolutionDetails[key]} `);
       key === "trade_species" &&
         evolutionDetails[key] !== null &&
         result.push(`at ${evolutionDetails[key]} `);
       key === "turn_upside_down" &&
         evolutionDetails[key] !== false &&
         result.push(`turning your screen down `);
-      key === "shed" &&
+      key === "trigger" &&
         evolutionDetails[key].name === "shed" &&
         result.push(
           `having an empty space and a pokemon when evolving nincada `
         );
+      key === "trigger" &&
+        evolutionDetails[key].name === "trade" &&
+        result.push(`when trading`);
     });
 
-    return result.join("");
+    return result.join(" ");
   };
 
   function printPokemon(pokemon) {
@@ -144,8 +140,8 @@ export default function Evolutions({ data }) {
 
   return (
     <div className={`${classes.evolutionWrapper} ${classes.container}`}>
-      {printPokemon(data.chain)}
-      {/* {data.chain.evolves_to.length > 0 && getEvolutions(data.chain.evolves_to)} */}
+      {evolutionChain && printPokemon(evolutionChain.chain)}
+      {/* {evolutionChain.chain.evolves_to.length > 0 && getEvolutions(evolutionChain.chain.evolves_to)} */}
     </div>
   );
 }

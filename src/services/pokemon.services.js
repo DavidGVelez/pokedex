@@ -1,5 +1,5 @@
-import { BASE_URL } from "../constants";
-import "../normalize";
+import { BASE_URL, IMG_URL } from "../constants";
+import { getIdFromUrl } from "../normalize";
 
 export const getPokemonByUrl = (url) =>
   new Promise((resolve) => {
@@ -22,7 +22,7 @@ export const getPokemon = (value) =>
               NORMALIZED_DATA = {
                 ...NORMALIZED_DATA,
                 name: pokemon.species.name,
-                img: pokemon.sprites.front_default,
+                img: `${IMG_URL}${pokemon.id}.png`,
                 stats: {
                   hp: pokemon.stats[0].base_stat,
                   attack: pokemon.stats[1].base_stat,
@@ -46,12 +46,22 @@ export const getPokemon = (value) =>
                   captureRate: pokemon.capture_rate,
                   hatchSteps: pokemon.hatch_counter,
                   genderRate: pokemon.gender_rate,
+                  evolutionChain: getIdFromUrl(pokemon.evolution_chain.url),
                 };
               })
             )
         );
       }
 
+      reject(() => console.log(data.error));
+    });
+  });
+export const getPokemonEvolutionChain = (id) =>
+  new Promise((resolve, reject) => {
+    fetch(`${BASE_URL}evolution-chain/${id}`).then((data) => {
+      if (data.ok) {
+        resolve(data.json().then((pokemon) => pokemon));
+      }
       reject(() => console.log(data.error));
     });
   });
@@ -73,42 +83,63 @@ export const getPokemonSpeciesData = (id) =>
       reject(() => console.log(data.error));
     });
   });
-// export const getPokemonsByBoundaries = async (limit, offset) => {
-//   var asdf = [];
-//   await fetch(
-//     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-//   ).then((res) =>
-//     res.json().then((data) => {
-//       data.results.forEach((item) => {
-//         asdf.push(fetch(item.url).then((data) => data.json()));
-//       });
-//     })
-//   );
+export const getPokemonsByBoundaries = (limit, offset) => {
+  return fetch(`${BASE_URL}pokemon?limit=${limit}&offset=${offset}`).then(
+    (res) =>
+      res.json().then((data) => {
+        let NORMALIZED_DATA = data.results.map((item) => {
+          return fetch(
+            `${BASE_URL}pokemon-species/${getIdFromUrl(item.url)}`
+          ).then((res) =>
+            res.json().then((data) => {
+              return {
+                name: data.name,
+                id: data.id,
+                img: IMG_URL + `${data.id}.png`,
+              };
+            })
+          );
+        });
+        return Promise.all(NORMALIZED_DATA).then((data) => data);
+      })
+  );
 
-//   return await Promise.all(asdf).then((values) => {
-//     const PokemonList = [];
-//     values.forEach((item) => {
-//       PokemonList.push({
-//         name: item.species.name,
-//         id: item.id,
-//         img: item.sprites.front_default,
-//       });
-//     });
-//     return PokemonList;
-//   });
-// };
-// OPTION 2
-export const getPokemonsByBoundaries = async (limit, offset) => {
-  const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const pokemon = data.results.map((data, index) => ({
-    name: data.name,
-    id: offset + index + 1,
-    img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-      index + offset + 1
-    }.png`,
-  }));
+  // var asdf = [];
+  // await fetch(
+  //   `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+  // ).then((res) =>
+  //   res.json().then((data) => {
+  //     data.results.forEach((item) => {
+  //       asdf.push(fetch(item.url).then((data) => data.json()));
+  //     });
+  //   })
+  // );
 
-  return pokemon;
+  // return await Promise.all(asdf).then((values) => {
+  //   const PokemonList = [];
+  //   values.forEach((item) => {
+  //     PokemonList.push({
+  //       name: item.species.name,
+  //       id: item.id,
+  //       img: item.sprites.front_default,
+  //     });
+  //   });
+  //   return PokemonList;
+  // });
 };
+
+// // OPTION 2
+// // export const getPokemonsByBoundaries = async (limit, offset) => {
+// //   const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
+// //   const res = await fetch(url);
+// //   const data = await res.json();
+// //   const pokemon = data.results.map((data, index) => ({
+// //     name: data.name,
+// //     id: offset + index + 1,
+// //     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+// //       index + offset + 1
+// //     }.png`,
+// //   }));
+
+// //   return pokemon;
+// // };

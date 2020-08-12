@@ -4,10 +4,11 @@ import PokemonHeader from "../organisms/PokemonHeader";
 import Title from "../atoms/Title";
 import InfoContainer from "../atoms/InfoContainer";
 import BasicInfo from "../atoms/BasicInfo";
+import Evolutions from "../atoms/Evolutions";
 import { theme } from "../../theme";
 import {
   getPokemon,
-  getPokemonSpeciesData,
+  getPokemonEvolutionChain,
 } from "../../services/pokemon.services";
 const useStyles = makeStyles({
   pokemon: {
@@ -22,13 +23,20 @@ const useStyles = makeStyles({
 export default function Pokemon({ id }) {
   const [pokemon, setPokemon] = useState({});
   const [pokemonId] = useState(id);
-  const [pokemonSpecies, setPokemonSpecies] = useState({});
+  const [evolutionChain, setEvolutionChain] = useState();
+  // const [pokemonSpecies, setPokemonSpecies] = useState({});
   useEffect(() => {
     getPokemon(pokemonId).then((data) => setPokemon(data));
   }, [pokemonId]);
+  useEffect(() => {
+    getPokemonEvolutionChain(pokemon.evolutionChain).then((data) =>
+      setEvolutionChain(data)
+    );
+  }, [pokemon]);
 
   const classes = useStyles();
   console.log("pokemon", pokemon);
+  console.log("evolution", evolutionChain);
   return pokemon ? (
     <div id="pokemon" className={classes.pokemon}>
       <Title text={pokemon.name} size="h1" />
@@ -37,6 +45,10 @@ export default function Pokemon({ id }) {
         <InfoContainer
           text={"Basic Info"}
           children={<BasicInfo {...pokemon} />}
+        />
+        <InfoContainer
+          text={"Evolutions"}
+          children={<Evolutions {...{ evolutionChain }} />}
         />
       </div>
     </div>

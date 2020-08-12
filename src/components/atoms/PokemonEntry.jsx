@@ -17,6 +17,9 @@ const useStyles = makeStyles({
       boxShadow: " 0 0 11px #555",
       cursor: "pointer",
     },
+    "&> img": {
+      maxWidth: "96px",
+    },
   },
   text: {
     flexGrow: 1,

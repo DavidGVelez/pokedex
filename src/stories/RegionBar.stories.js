@@ -17,6 +17,10 @@ const props = {
       handleClickRegion: () => console.log("hoenn"),
     },
     {
+      region: "sinnoh",
+      handleClickRegion: () => console.log("sinnoh"),
+    },
+    {
       region: "teselia",
       handleClickRegion: () => console.log("teselia"),
     },

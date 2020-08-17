@@ -478,14 +478,15 @@ const useStyles = makeStyles({
 
 export default function Main() {
   const [list, setList] = useState([{}]);
-  const [limit, setLimit] = useState(20);
-  const [offset, setOffset] = useState(0);
+  const [range, setRange] = useState({ limit: 20, offset: 0 });
   const [pokemonId, setPokemonId] = useState();
   // const [pokemonData, setPokemonData] = useState();
   const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
-    getPokemonsByBoundaries(limit, offset).then((data) => setList(data));
-  }, [limit, offset]);
+    getPokemonsByBoundaries(range.limit, range.offset).then((data) =>
+      setList(data)
+    );
+  }, [range]);
   // useEffect(() => {
   //   getPokemon(pokemonId).then((data) => setPokemonData(data));
   // }, [pokemonId]);
@@ -506,52 +507,75 @@ export default function Main() {
             {
               text: "kanto",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "jhotto",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "hoenn",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "sinnoh",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "teselia",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "kalos",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
             {
               text: "alola",
               handleClickRegion: (region) => {
-                setLimit(REGIONS[region].limit);
-                setOffset(REGIONS[region].offset);
+                setRange({
+                  limit: REGIONS[region].limit,
+                  offset: REGIONS[region].offset,
+                });
               },
             },
+            // {
+            //   text: "galar",
+            //   handleClickRegion: (region) => {
+            //     setRange({
+            //       limit: REGIONS[region].limit,
+            //       offset: REGIONS[region].offset,
+            //     });
+            //   },
+            // },
           ]}
         />
       </header>

@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 export default function Pokemon({ id }) {
   const [pokemon, setPokemon] = useState({});
   const [pokemonId] = useState(id);
-  const [evolutionChain, setEvolutionChain] = useState();
+  const [evolutionChain, setEvolutionChain] = useState(null);
   // const [pokemonSpecies, setPokemonSpecies] = useState({});
   useEffect(() => {
     getPokemon(pokemonId).then((data) => setPokemon(data));
@@ -33,7 +33,6 @@ export default function Pokemon({ id }) {
       setEvolutionChain(data)
     );
   }, [pokemon]);
-
   const classes = useStyles();
   return pokemon ? (
     <div id="pokemon" className={classes.pokemon}>

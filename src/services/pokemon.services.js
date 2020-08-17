@@ -16,13 +16,24 @@ export const getPokemon = (value) =>
             .json()
             .then((pokemon) => {
               const types = [];
+              const abilities = [];
               pokemon.types.map((type) =>
                 types.push({ type: type.type.name, name: type.type.name })
               );
+              pokemon.abilities.map((ability) =>
+                abilities.push({
+                  name: ability.ability.name,
+                  isHidden: ability.is_hidden,
+                })
+              );
+              console.log("ability", abilities);
               NORMALIZED_DATA = {
                 ...NORMALIZED_DATA,
                 name: pokemon.species.name,
-                img: `${IMG_URL}${pokemon.id}.png`,
+                img:
+                  `${IMG_URL}${pokemon.id}.png` !== null
+                    ? `${IMG_URL}${pokemon.id}.png`
+                    : process.env.PUBLIC_URL + "/missing.png",
                 stats: {
                   hp: pokemon.stats[0].base_stat,
                   attack: pokemon.stats[1].base_stat,
@@ -31,6 +42,7 @@ export const getPokemon = (value) =>
                   spDef: pokemon.stats[4].base_stat,
                   speed: pokemon.stats[5].base_stat,
                 },
+                abilities: abilities,
                 height: pokemon.height,
                 weight: pokemon.weight,
                 types: types,
@@ -53,7 +65,7 @@ export const getPokemon = (value) =>
         );
       }
 
-      reject(console.log(data.error));
+      reject(console.log(new Error("Failed to fetch some refs")));
     });
   });
 export const getPokemonEvolutionChain = (id) =>
@@ -62,7 +74,7 @@ export const getPokemonEvolutionChain = (id) =>
       if (data.ok) {
         resolve(data.json().then((pokemon) => pokemon));
       }
-      reject(console.log(data.error));
+      reject(console.log(new Error("Failed to fetch some refs")));
     });
   });
 export const getPokemonSpeciesData = (id) =>
@@ -80,10 +92,11 @@ export const getPokemonSpeciesData = (id) =>
           })
         );
       }
-      reject(console.log(data.error));
+      reject(console.log(new Error("Failed to fetch some refs")));
     });
   });
 export const getPokemonsByBoundaries = (limit, offset) => {
+  //Needs a Refactor
   return fetch(`${BASE_URL}pokemon?limit=${limit}&offset=${offset}`).then(
     (res) =>
       res.json().then((data) => {
@@ -95,7 +108,10 @@ export const getPokemonsByBoundaries = (limit, offset) => {
               return {
                 name: data.name,
                 id: data.id,
-                img: IMG_URL + `${data.id}.png`,
+                img:
+                  IMG_URL + `${data.id}.png`
+                    ? IMG_URL + `${data.id}.png`
+                    : process.env.PUBLIC_URL + "/missing.png",
               };
             })
           );
@@ -103,43 +119,4 @@ export const getPokemonsByBoundaries = (limit, offset) => {
         return Promise.all(NORMALIZED_DATA).then((data) => data);
       })
   );
-
-  // var asdf = [];
-  // await fetch(
-  //   `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
-  // ).then((res) =>
-  //   res.json().then((data) => {
-  //     data.results.forEach((item) => {
-  //       asdf.push(fetch(item.url).then((data) => data.json()));
-  //     });
-  //   })
-  // );
-
-  // return await Promise.all(asdf).then((values) => {
-  //   const PokemonList = [];
-  //   values.forEach((item) => {
-  //     PokemonList.push({
-  //       name: item.species.name,
-  //       id: item.id,
-  //       img: item.sprites.front_default,
-  //     });
-  //   });
-  //   return PokemonList;
-  // });
 };
-
-// // OPTION 2
-// // export const getPokemonsByBoundaries = async (limit, offset) => {
-// //   const url = `${BASE_URL}pokemon?limit=${limit}&offset=${offset}`;
-// //   const res = await fetch(url);
-// //   const data = await res.json();
-// //   const pokemon = data.results.map((data, index) => ({
-// //     name: data.name,
-// //     id: offset + index + 1,
-// //     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-// //       index + offset + 1
-// //     }.png`,
-// //   }));
-
-// //   return pokemon;
-// // };

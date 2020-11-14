@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 
     "&>span": {
       width: "60%",
+      fontSize: theme.fontSize.small,
     },
     "&> h4": {
       margin: "0",

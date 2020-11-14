@@ -1,9 +1,9 @@
 export const theme = {
   fontFamily: "Helvetica",
   fontSize: {
-    small: ".8rem",
-    medium: "1rem",
-    large: "1.2rem",
+    small: "14px",
+    medium: "16px",
+    large: "18px",
   },
   colors: {
     container: "#B92536",
